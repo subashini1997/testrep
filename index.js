@@ -11,9 +11,9 @@ const app = express();
 
 app.use(express.json());
 
-const PORT = 4000;
+// const PORT = 4000;
 
-// const PORT = process.env.PORT;
+const PORT = process.env.PORT;
 
 const MONGO_URL = process.env.MONGO_URL;
 
