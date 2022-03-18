@@ -7,7 +7,9 @@ dotenv.config();
 
 console.log(process.env.MONGO_URL);
 
-const app = express();
+app.use(cors());
+
+// const app = express();
 
 app.use(express.json());
 
