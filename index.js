@@ -3,13 +3,17 @@
 import express from "express";
 import { MongoClient } from "mongodb";
 import dotenv from "dotenv";
+import cors from "cors";
+
 dotenv.config();
 
 console.log(process.env.MONGO_URL);
 
-app.use(cors());
 
-// const app = express();
+
+const app = express();
+
+app.use(cors());
 
 app.use(express.json());
 
