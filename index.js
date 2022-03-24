@@ -15,6 +15,71 @@ app.use(cors());
 
 app.use(express.json());
 
+const animals =[
+  {
+    name : "GIRAFFE",
+    img : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1Hrr2YCUOCUujMsegv8SvhWlnkHzWp170Dw&usqp=CAU",
+  },
+  {
+    name : "TIGER",
+    img : "https://akm-img-a-in.tosshub.com/indiatoday/images/story/201908/frida-bredesen-315405-unsplash.jpeg?mtTpFMbHj52LLZ1fGqPJ_HNq4KsZmiae&size=770:433 ",
+  },
+  {
+    name : "LION",
+    img : "https://animalrescueprofessionals.org/wp-content/uploads/2019/11/lion-africa-feature.jpg",
+  },
+  {
+    name : "CHIMPANZEE",
+    img : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNHgvreaaKBk18CM63igAjAsiCqOEqqYlTEQ&usqp=CAU",
+  },
+  {
+
+    name : "CAMEL",
+    img : "https://qph.fs.quoracdn.net/main-qimg-5d9e623b167c6401fc6cecefb57f23c4-c",
+  },
+  {
+    name : "ELEPHANT",
+    img : "https://www.treehugger.com/thmb/AO24YzFwfYmwXW8wzS2MkE_nY4M=/1732x1299/smart/filters:no_upscale()/GettyImages-1128748845-1fbe765d21f54eafb0deae5aed9447bb.jpg",
+  },
+  {
+    name : "BEAR",
+    img : "https://image.shutterstock.com/image-photo/protective-female-brown-bear-ursus-260nw-1725069664.jpg",
+  },
+  {
+    name : "HIPPO",
+    img : "https://cincinnatizoo.org/system/assets/uploads/2020/11/50230281791_e4faa5288a_b.jpg",
+  },
+  {
+    name : "RHINO",
+    img : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcmZWmitSw-uCDDeGRoGYtjFoqB8gLBOKShw&usqp=CAU",
+  },
+  {
+    name : "KANGAROO",
+    img : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT20o1kXdzySA5dUkSVNA1Y2sElAGF86A3U-jU5WOq2kIhplFQvTv8eBGdT3IRBBSdWum4&usqp=CAU",
+  },
+];
+
+
+
+app.get("/animals", async function (request, response) {
+   const animals = await client
+     .db("b30wd")
+     .collection("animals")
+     .find({})
+    .toArray();
+  
+  response.send(animals);
+});
+
+app.post("/animals", async function (request, response) {
+  //    db.movies.insertMany(data)
+  const data = request.body;
+  console.log(data);
+  const result = await client.db("b30wd").collection("animals").insertMany(data);
+  response.send(result);
+});
+
+
 // const PORT = 4000;
 
 // const mobiles = [
