@@ -15,6 +15,97 @@ app.use(cors());
 
 app.use(express.json());
 
+const getAllRooms = [
+  {
+  SeatsAvailable:"100",
+  AmenitiesInRoom:"50",
+  PriceFor1Hour:"₹5000"
+}
+];
+
+const getAllbookings =[
+ {
+   CustomerName:"RAM",
+   Date:"20/03/2022",
+   StartTime:"9.30AM",
+   EndTime:"10.00PM",
+   RoomID :"25"
+ }
+];
+
+const listAllRooms =[{
+  RoomName : "Bavisha",
+  BookedStatus: "good",
+  CustomerName :"RAM",
+  Date:"20/03/2022",
+  StartTime:"9.30AM",
+   EndTime:"10.00PM",
+
+}]
+
+const listAllCustomer =[{
+  CustomerName :"RAM",
+  RoomName : "Bavisha",
+  Date:"20/03/2022",
+  StartTime:"9.30AM",
+   EndTime:"10.00PM",
+}]
+
+app.get("/getAllRooms", function (request,  response) {
+
+  response.send(getAllRooms);
+
+ });
+ app.get("/getAllbookings", function (request,  response) {
+ 
+    response.send(getAllbookings);
+ 
+   });
+   app.get("/listAllRooms", function (request,  response) {
+ 
+    response.send(listAllRooms);
+ 
+   });
+   app.get("/listAllCustomer", function (request,  response) {
+ 
+    response.send(listAllCustomer);
+ 
+   });
+
+  
+
+   app.post("/getAllRooms", async function (request, response) {
+  //    db.movies.insertMany(data)
+  const data = request.body;
+  console.log(data);
+  const result = await client.db("b30wd").collection("getAllRooms").insertMany(data);
+  response.send(result);
+});
+
+app.post("/getAllbookings", async function (request, response) {
+  //    db.movies.insertMany(data)
+  const data = request.body;
+  console.log(data);
+  const result = await client.db("b30wd").collection("getAllbookings").insertMany(data);
+  response.send(result);
+});
+
+app.post("/listAllRooms", async function (request, response) {
+  //    db.movies.insertMany(data)
+  const data = request.body;
+  console.log(data);
+  const result = await client.db("b30wd").collection("listAllRooms").insertMany(data);
+  response.send(result);
+});
+
+app.post("/listAllCustomer", async function (request, response) {
+  //    db.movies.insertMany(data)
+  const data = request.body;
+  console.log(data);
+  const result = await client.db("b30wd").collection("listAllCustomer").insertMany(data);
+  response.send(result);
+});
+
 const mobile = [{
   img:"https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQ7bPfQoErT2AXLujP-AvnXxJwE7q32Mm_pyTFrW5FhHrcNDD-uPSiI0Kxc33HPUWjhpQ5edANh2M66uW1oJH5dRi0VIohb6Sk9gxaTG8z5kaBkmcIrBBjXrA&usqp=CAE",
   title:"APPLE IPHONE !# PRO MAX GOLD",
